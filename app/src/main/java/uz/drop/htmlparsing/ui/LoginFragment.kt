@@ -20,12 +20,6 @@ import uz.drop.htmlparsing.utils.extensions.viewBinding
 class LoginFragment : Fragment(R.layout.fragment_login) {
     private val binding: FragmentLoginBinding by viewBinding { FragmentLoginBinding.bind(it) }
     private val viewModel: MainViewModel by activityViewModels()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-
-        }
-    }
 
     @SuppressLint("FragmentLiveDataObserve")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

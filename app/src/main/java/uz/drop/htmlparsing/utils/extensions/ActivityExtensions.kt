@@ -12,15 +12,3 @@ inline fun <T : ViewBinding> AppCompatActivity.viewBinding(
     lazy(LazyThreadSafetyMode.NONE) {
         bindingInflater.invoke(layoutInflater)
     }
-
-fun FragmentActivity.changeStatusBarColor(color: Int) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        window.statusBarColor = color
-    }
-}
-
-fun FragmentActivity.changeNavigationBarColor(color: Int) {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        window.navigationBarColor = color
-    }
-}

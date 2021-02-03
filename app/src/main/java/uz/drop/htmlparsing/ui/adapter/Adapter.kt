@@ -1,6 +1,5 @@
 package uz.drop.htmlparsing.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -30,11 +29,4 @@ class Adapter(private val list: List<Data>) : RecyclerView.Adapter<Adapter.VH>()
     override fun getItemCount(): Int {
         return list.size
     }
-/*
-    fun submitList(ls: List<Data>) {
-        list.clear()
-        list.addAll(ls)
-        notifyDataSetChanged()
-        Log.d("AAA", "submitList: $ls")
-    }*/
 }

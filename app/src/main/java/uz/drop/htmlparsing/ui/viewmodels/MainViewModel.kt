@@ -1,6 +1,5 @@
 package uz.drop.htmlparsing.ui.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,7 +19,6 @@ class MainViewModel : ViewModel() {
     private val repository: Repository = RepositoryImpl()
 
     fun login(login: String, password: String) {
-        Log.d("AAA login ","$login $password")
         CoroutineScope(Dispatchers.IO).launch {
             _htmlContentLiveData.postValue(Response.Loading())
             val response: Response<String> = repository.login(login, password)
@@ -29,7 +27,6 @@ class MainViewModel : ViewModel() {
     }
 
     fun parseHtml(html: String) {
-        Log.d("AAA parse html",html)
         CoroutineScope(Dispatchers.IO).launch {
             _listLiveData.postValue(Response.Loading())
             val responseList: Response<List<Data>> = repository.parseHtml(html)

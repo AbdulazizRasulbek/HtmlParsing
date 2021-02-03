@@ -26,23 +26,19 @@ class RepositoryImpl : Repository {
                 .userAgent(USER_AGENT)
                 .execute()
 
-            // # Fill the login form
-            // ## Find the form first...
+
             val loginForm = loginFormResponse.parse()
                 .select("form#AbonentEntryForm").first() as? FormElement
             loginForm ?: return Response.Error("Login formani parse qilishda xatolik")
 
-            // ## ... then "type" the username ...
+
             val loginField: Element = loginForm.select("#licshetLogin").first()
             loginField.`val`(login)
 
 
-            // ## ... and "type" the password
             val passwordField: Element = loginForm.select("#passwordLogin").first()
             passwordField.`val`(password)
 
-
-            // # Now send the form for login
 
             val loginActionResponse = loginForm.submit()
                 .cookies(loginFormResponse.cookies())

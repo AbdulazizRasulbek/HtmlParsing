@@ -1,5 +1,6 @@
 package uz.drop.htmlparsing.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -22,13 +23,8 @@ import uz.drop.htmlparsing.utils.extensions.viewBinding
 class DataFragment : Fragment(R.layout.fragment_data) {
     private val binding: FragmentDataBinding by viewBinding { FragmentDataBinding.bind(it) }
     private val viewModel: MainViewModel by activityViewModels()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
 
-        }
-    }
-
+    @SuppressLint("FragmentLiveDataObserve")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
@@ -52,7 +48,7 @@ class DataFragment : Fragment(R.layout.fragment_data) {
         viewModel.listLiveData.observe(this, listObserver)
     }
 
-    val listObserver = Observer<Response<List<Data>>> {
+    private val listObserver = Observer<Response<List<Data>>> {
         when (it) {
             is Response.Loading -> {
                 binding.progress.isVisible = true
@@ -68,7 +64,7 @@ class DataFragment : Fragment(R.layout.fragment_data) {
         }
     }
 
-    val htmlContentObserver = Observer<Response<String>> {
+    private val htmlContentObserver = Observer<Response<String>> {
         when (it) {
             is Response.Loading -> {
                 binding.progress.isVisible = true
